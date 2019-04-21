@@ -1,7 +1,12 @@
 
-@value colors: './colors.css';
-@value mintBasic from colors;
+@value mintBasic from './colors.css';
+@value roseBasic from './colors.css';
 
 body{
     background-color: mintBasic;
+
+@media (--media-phone) {
+    background-color: roseBasic;
 }
+}
+
