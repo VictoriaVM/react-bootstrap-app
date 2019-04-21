@@ -4,6 +4,7 @@ import media from './ui/hocs/media/media.jsx';
 
 import '../client/vendor';
 import './css/main.css';
+import './css/train.css';
 
 import MainPage from './ui/pages/MainPage/MainPage.jsx';
 
