@@ -1,7 +1,7 @@
-/*
-@value colors: 'colors.css';
+
+@value colors: './colors.css';
 @value mintBasic from colors;
-*/
+
 body{
-    background-color: /*mintBasic*/ #98FB98;
+    background-color: mintBasic;
 }
