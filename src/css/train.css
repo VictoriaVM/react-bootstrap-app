@@ -3,10 +3,14 @@
 @value roseBasic from './colors.css';
 
 body{
-    background-color: mintBasic;
+
 
 @media (--media-phone) {
     background-color: roseBasic;
 }
+}
+
+.logo, .form, .buttons{
+    display: inline-block;
 }
 
