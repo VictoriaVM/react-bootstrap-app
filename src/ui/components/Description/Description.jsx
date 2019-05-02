@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import styles from './Description.css';
 
 class Logo extends Component {
@@ -54,11 +53,11 @@ class Buttons extends Component {
 
 class Nav extends Component {
     render () {
-        return <div className={styles.nav}>
+        return <div className={styles.navigation}>
             <div className={styles.content}>
-            <Logo/>
-            <Form/>
-            <Buttons/>
+                <Logo/>
+                <Form/>
+                <Buttons/>
             </div>
         </div>;
     }
@@ -77,32 +76,114 @@ class Info extends Component {
     render () {
         return <div className={styles.info}>
             <div className={styles.top}>
-            <h1 className={styles.profileName}>leonardodicaprio</h1>
-            <span className={styles.verified}><img src="https://png.icons8.com/ios/1600/007AFF/verified-account"/></span>
-            <button
-                className={styles.enter_btn}
-                onClick={this.onBtnClickHandler}
-                ref='enter_button'
-            >
+                <h1 className={styles.profileName}>leonardodicaprio</h1>
+                <span className={styles.verified}><img src="https://png.icons8.com/ios/1600/007AFF/verified-account"/></span>
+                <button
+                    className={styles.enter_btn}
+                    onClick={this.onBtnClickHandler}
+                    ref='enter_button'
+                >
                 Подписаться
-            </button>
+                </button>
             </div>
-           <ul className={styles.stats}>
+            <ul className={styles.stats}>
                 <li><span>978</span> публикаций</li>
                 <li><span>30,9млн</span> подписчиков</li>
                 <li>Подписки: <span>31</span></li>
-           </ul>
+            </ul>
             <div>
                 <h2>Leonardo DiCaprio</h2><br/>
                 <span>Actor and Environmentalist</span><br/>
                 <a href="https://l.instagram.com/?u=http%3A%2F%2Fglobaldealfornature.org%2F&amp;e=ATO6prVX3zI8NGvQMhr-rPbDnWOEU0ktkPpLPhdllQlN_YfxUoKdqIncv7LqA-RxpGwmg_a6"
-                   rel="me nofollow noopener noreferrer"
-                   target="_blank">globaldealfornature.org</a>
+                    rel="me nofollow noopener noreferrer"
+                    target="_blank">globaldealfornature.org</a>
             </div>
         </div>;
     }
 }
 
+class PhotoPosts extends Component {
+    render () {
+        return <div className={styles.photo}>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Square_Panorama_of_Aru_Valley%2C_Jammu_and_Kashmir%2C_India.jpg" style={{ width: 293, height: 293 }}/>
+        </div>;
+    }
+}
+class PhotoTagged extends Component {
+    render () {
+        return <div className={styles.photo}>
+            <img src="https://images.fineartamerica.com/images-medium-large/nature-square--saddleback-dragonfly-carol-groenen.jpg" style={{ width: 293, height: 293 }}/>
+        </div>;
+    }
+}
+class PhotoRowPosts extends Component {
+    render () {
+        return <div className={styles.photo_row}>
+            <PhotoPosts/>
+            <PhotoPosts/>
+            <PhotoPosts/>
+        </div>;
+    }
+}
+class PhotoRowTagged extends Component {
+    render () {
+        return <div className={styles.photo_row}>
+            <PhotoTagged/>
+            <PhotoTagged/>
+            <PhotoTagged/>
+        </div>;
+    }
+}
+
+class Tabs extends Component {
+    onBtnClickHandlerOne (e) {
+        e.preventDefault();
+        document.getElementById('tagged').classList.add(styles.blocked);
+        document.getElementById('post').classList.remove(styles.blocked);
+        document.getElementById('first').classList.add(styles.active);
+        document.getElementById('second').classList.remove(styles.active);
+    };
+    onBtnClickHandlerTwo (e) {
+        e.preventDefault();
+        document.getElementById('post').classList.add(styles.blocked);
+        document.getElementById('tagged').classList.remove(styles.blocked);
+        document.getElementById('second').classList.add(styles.active);
+        document.getElementById('first').classList.remove(styles.active);
+    };
+    render () {
+        return <div className={styles.nav_tabs}>
+            <a href='' onClick={this.onBtnClickHandlerOne} id='first' className={styles.active}><div><img src="http://cdn.onlinewebfonts.com/svg/img_33853.png" style={{ width: 12, height: 12 }}/></div><span>публикации</span></a>
+            <a href='' onClick={this.onBtnClickHandlerTwo} id='second' className={styles.marg}><div><img src="http://cdn.onlinewebfonts.com/svg/img_266351.png" style={{ width: 14, height: 14 }}/></div><span>отметки</span></a>
+        </div>;
+    }
+}
+
+class TabFirst extends React.Component {
+    render () {
+        return (
+            <div>
+                <div id='post'>
+                    <PhotoRowPosts/>
+                    <PhotoRowPosts/>
+                    <PhotoRowPosts/>
+                </div>
+            </div>
+        );
+    }
+}
+class TabSecond extends React.Component {
+    render () {
+        return (
+            <div>
+                <div id='tagged'>
+                    <PhotoRowTagged/>
+                    <PhotoRowTagged/>
+                    <PhotoRowTagged/>
+                </div>
+            </div>
+        );
+    }
+}
 class Header extends Component {
     render () {
         return <div className={styles.header}>
@@ -118,7 +199,10 @@ class Main extends Component {
         return <div className={styles.main}>
             <div className={styles.content}>
                 <div className={styles.main_content}>
-                <Header/>
+                    <Header/>
+                    <Tabs/>
+                    <TabFirst/>
+                    <TabSecond/>
                 </div>
             </div>
         </div>;
