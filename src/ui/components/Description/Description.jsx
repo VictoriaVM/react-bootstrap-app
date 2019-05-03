@@ -6,16 +6,24 @@ class Logo extends Component {
         return <div className={styles.logo}>
             <img src="http://www.transparentpng.com/thumb/logo-instagram/SKq9yH-black-and-white-instagram-logo-png.png" style={{ width: 26, height: 26 }}/>
             <img className={styles.stick} src="https://img.icons8.com/ios/420/thick-vertical-line-filled.png" style={{ width: 3, height: 32 }}/>
-            <img className={styles.insta} src="https://www.lipoza.com/Uploads/EditorUploads/instagram_.png" style={{ height: 38 }}/>
-             </div>;
+            <img className={styles.insta} id='insta' src="https://www.lipoza.com/Uploads/EditorUploads/instagram_.png" style={{ height: 38 }}/>
+        </div>;
     }
 }
 
 class Form extends Component {
+    onFormClickHandler (e) {
+        e.preventDefault();
+        document.getElementById('cross').classList.add(styles.cross);
+        document.getElementById('cross').classList.remove(styles.cross_change);
+        document.getElementById('glass').classList.add(styles.glass_change);
+        document.getElementById('glass').classList.remove(styles.glass);
+        document.getElementById('form').classList.add(styles.form_change);
+    };
     render () {
-        return <div className={styles.form}>
-            <form className='add cf'>
-                <div className={styles.glass} role="button" tabIndex="0">
+        return <div className={styles.form} id='form'>
+            <form className='add cf' onClick={this.onFormClickHandler}>
+                <div className={styles.glass} role="button" tabIndex="0" id='glass'>
                     <span className={styles.SearchIcon}><img className={styles.SearchIcon} src="https://pngimage.net/wp-content/uploads/2018/06/%D0%B8%D0%BA%D0%BE%D0%BD%D0%BA%D0%B0-%D0%BB%D1%83%D0%BF%D0%B0-png-8.png"/></span>
                 </div>
                 <input
@@ -24,7 +32,9 @@ class Form extends Component {
                     placeholder='Поиск'
                     ref='search'
                 />
-
+                <div className={styles.cross_change} id='cross'>
+                   <span className={styles.cross_icon}><img className={styles.CrossIcon} src="https://www.freeiconspng.com/uploads/close-button-png-27.png"/></span>
+                </div>
             </form>
         </div>;
     }
@@ -53,7 +63,7 @@ class Buttons extends Component {
 
 class Nav extends Component {
     render () {
-        return <div className={styles.navigation}>
+        return <div className={styles.navigation} id='navigation'>
             <div className={styles.content}>
                 <Logo/>
                 <Form/>

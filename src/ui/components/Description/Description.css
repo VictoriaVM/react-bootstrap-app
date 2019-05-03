@@ -46,6 +46,9 @@ body{
     border-bottom: 1px solid rgba(0,0,0,.0975);
     padding: 20px 20px;
 }
+.navigation_mod{
+    padding: 10px 10px !important;
+}
 .content{
     max-width: 975px !important;
     display: flex;
@@ -60,6 +63,9 @@ body{
 }
 .insta{
     margin-top: 3px;
+}
+.insta_hidden{
+    visibility: hidden;
 }
 .stick{
     margin: 0px 13px;
@@ -127,15 +133,39 @@ body{
     text-transform: none;
     text-shadow: none;
 }
+.form_change input{
+    text-align: left !important;
+    background: #ffffff !important;
+}
 .SearchIcon{
     width: 12px;
     height: 12px;
+}
+.CrossIcon{
+    width: 12px;
+    height: 12px;
+}
+.cross_change{
+    display: none;
+}
+.cross{
+    position: absolute;
+    display: inline-block;
+    z-index: 4;
+    padding: 5px 20px 5px 5px;
+    right: -5px;
 }
 .glass{
     position: absolute;
     display: inline-block;
     z-index: 3;
     padding: 5px 20px 5px 74px;
+}
+.glass_change{
+    position: absolute;
+    display: inline-block;
+    z-index: 3;
+    padding: 5px 20px 5px 10px;
 }
 /*.avatar canvas{
     position: absolute;
@@ -273,3 +303,22 @@ body{
     border-top: 1px solid #262626;
 }
 
+/*
+document.onScroll={this.onScrollHandleHeader}
+
+onScrollHandleHeader (e) {
+        e.preventDefault();
+        document.getElementById('insta').classList.add(styles.insta_hidden);
+        document.getElementById('navigation').classList.add(styles.navigation_mod);
+    };
+
+
+
+componentDidMount () {
+        window.onScroll = function onScrollHandleHeader (e) {
+            e.preventDefault();
+            document.getElementById('insta').classList.add(styles.insta_hidden);
+            document.getElementById('navigation').classList.add(styles.navigation_mod);
+        };
+    }
+ */
