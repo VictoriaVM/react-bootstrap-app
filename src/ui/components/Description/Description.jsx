@@ -103,6 +103,16 @@ class Info extends Component {
                 >
                 Подписаться
                 </button>
+                <button
+                    className={styles.info_btn}
+                >
+                    <span>&#9660;</span>
+                </button>
+                <a
+                    className={styles.info_dots}
+                >
+                    <span>...</span>
+                </a>
             </div>
             <ul className={styles.stats}>
                 <li><span>978</span> публикаций</li>
