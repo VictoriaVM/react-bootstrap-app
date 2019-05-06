@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
-import Description from '../../components/Description/Description.jsx';
-import Points from '../../components/Points/Points.jsx';
+import Train from '../../components/Train.jsx';
 
 class MainPage extends Component {
     render () {
         return <section>
-            <Description />
-            <Points />
+            <Train />
         </section>;
     }
 }
