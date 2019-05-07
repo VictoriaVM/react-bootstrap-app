@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import styles from './../../css/train.css';
+import TabFirst from "./TabFirst";
+import TabSecond from "./TabSecond";
 
 class Header extends Component {
+    value = 95;
+    state = {
+        name: this.value,
+        button: 'enter_btn'
+    };
+    updateData = (value) => {
+        if (this.state.button === 'enter_btn') {
+            this.setState({ name: ++value });
+            this.setState({ button: 'follow_btn' });
+        } else {
+            this.setState({ name: --value });
+            this.setState({ button: 'enter_btn' });
+        }
+    };
     render () {
         return <div className={styles.header}>
             <div className={styles.content}>
@@ -15,14 +31,14 @@ class Header extends Component {
                         <h1 className={styles.profileName}>leonardodicaprio</h1>
                         <span className={styles.verified}><img src="https://png.icons8.com/ios/1600/007AFF/verified-account"/></span>
                         <button
-                            className={styles.enter_btn}
-                            onClick={this.onBtnClickHandler}
-                            ref='enter_button'
+                            id = 'follow'
+                            className = {this.state.button === 'enter_btn' ? styles.enter_btn : styles.follow_btn }
+                            onClick ={() => { this.updateData(this.state.name, this.state.button); }}
                         >
-                            Подписаться
+                            { this.state.button === 'follow_btn' ? 'Подписки' : 'Подписаться' }
                         </button>
                         <button
-                            className={styles.info_btn}
+                            className = {this.state.button === 'enter_btn' ? styles.info_btn : styles.info_btn_mod }
                         >
                             <span>&#9660;</span>
                         </button>
@@ -34,7 +50,7 @@ class Header extends Component {
                     </div>
                     <ul className={styles.stats}>
                         <li><span>978</span> публикаций</li>
-                        <li><span>30,9млн</span> подписчиков</li>
+                        <li><span>{this.state.name}</span> подписчиков</li>
                         <li>Подписки: <span>31</span></li>
                     </ul>
                     <div>

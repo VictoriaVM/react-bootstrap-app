@@ -91,6 +91,24 @@ body{
     width: auto;
     left: -12px;
 }
+.info_btn_mod{
+    display: block;
+    background-color: #fafafa;
+    border: solid 1px #dbdbdb;
+    border-radius: 4px;
+    color: #262626;
+    position: relative;
+    cursor: pointer;
+    font-family: HelveticaNeueCyrThin;
+    padding: 5px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 18px;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+    left: -12px;
+}
 .enter_btn{
     background-color: #3897f0;
     border: 1px solid #3897f0;
@@ -109,7 +127,24 @@ body{
     white-space: nowrap;
     width: auto;
 }
-
+.follow_btn{
+    background-color: #fafafa;
+    border: solid 1px #dbdbdb;
+    border-radius: 4px;
+    color: #262626;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-family: HelveticaNeueCyr;
+    padding: 5px 9px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 18px;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+}
 .register_btn{
     color: #3897f0;
     font-family: HelveticaNeueCyr;
