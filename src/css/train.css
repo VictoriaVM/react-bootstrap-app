@@ -15,7 +15,7 @@ body{
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 20;
     transition: .3s ease-in-out;
     background-color: #ffffff;
     border-bottom: 1px solid rgba(0,0,0,.0975);
@@ -25,7 +25,7 @@ body{
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 20;
     transition: .3s ease-in-out;
     background-color: #ffffff;
     border-bottom: 1px solid rgba(0,0,0,.0975);
@@ -154,7 +154,7 @@ body{
     cursor: pointer;
 }
 
-.form{
+.form, .form_change{
     display: flex;
     align-items: center;
     width: 215px;
@@ -163,6 +163,7 @@ body{
     min-width: 125px;
     justify-self: flex-start;
     position: relative;
+    align-self: center;
 }
 .form input{
     text-align: center;
@@ -187,6 +188,22 @@ body{
 .form_change input{
     text-align: left;
     background: #ffffff;
+    border: solid 1px #dbdbdb;
+    border-radius: 3px;
+    color: #dbdbdb;
+    outline: 0;
+    padding: 3px 10px 3px 26px;
+    z-index: 2;
+    cursor: text;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: HelveticaNeueCyrThin;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-shadow: none;
+    width: 215px;
 }
 .SearchIcon{
     width: 12px;
@@ -296,6 +313,41 @@ body{
 }
 .photo{
     display: inline-block;
+}
+.photo_container{
+    position: relative;
+}
+.photo_hover_none{
+    display: none;
+}
+.photo_hover{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba( 0, 0, 0, 0.3);;
+    z-index: 10;
+    width: 293px;
+    height: 293px;
+}
+.photo_hover span{
+    margin-left: 6px;
+}
+.hover_stats, .hover_stats div{
+    display: inline-block;
+    align-self: center;
+}
+.hover_stats{
+    margin: 0 10px;
+    color: #ffffff;
+    font-family: HelveticaNeueCyr;
+    font-size: 16px;
+}
+.hover_stats img{
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    position: relative;
+    top: 2px;
 }
 .photo_row{
     width: 935px;

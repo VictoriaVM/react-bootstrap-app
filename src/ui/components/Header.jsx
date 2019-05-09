@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import styles from './../../css/train.css';
-import TabFirst from "./TabFirst";
-import TabSecond from "./TabSecond";
 
 class Header extends Component {
     value = 95;
@@ -40,7 +38,7 @@ class Header extends Component {
                         <button
                             className = {this.state.button === 'enter_btn' ? styles.info_btn : styles.info_btn_mod }
                         >
-                            <span>&#9660;</span>
+                            <div><span>&#9660;</span></div>
                         </button>
                         <a
                             className={styles.info_dots}
