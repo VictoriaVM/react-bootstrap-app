@@ -96,7 +96,6 @@ class PhotoTagged extends Component {
                     <span>
                         {/* eslint-disable-next-line react/prop-types */}
                         {this.props.likes}
-                        тыс.
                     </span>
                 </div>
                 <div className={styles.hover_stats}>
