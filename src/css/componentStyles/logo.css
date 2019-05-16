@@ -1,0 +1,24 @@
+﻿.logo{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    align-self: center;
+    width: 377.5px;
+    height: 36px;
+}
+.insta{
+    margin-top: 3px;
+    display: inline-block;
+}
+.insta_hidden{
+    display: none;
+    transition: .3s ease-in-out;
+}
+.stick{
+    margin: 0px 13px;
+    display: inline-block;
+}
+.stick_hidden{
+    display: none;
+    transition: .3s ease-in-out;
+}

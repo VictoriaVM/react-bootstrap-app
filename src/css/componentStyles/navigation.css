@@ -1,0 +1,28 @@
+﻿.navigation{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    transition: .3s ease-in-out;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,.0975);
+    padding: 20px 20px;
+}
+.navigation_modified{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    transition: .3s ease-in-out;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,.0975);
+    padding: 7px 7px;
+}
+
+.content{
+    max-width: 975px;
+    display: flex;
+    align-items: stretch;
+    flex-shrink: 0;
+    margin: 0 auto;
+}

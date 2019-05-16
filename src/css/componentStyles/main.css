@@ -1,0 +1,17 @@
+﻿@import '../fonts.css';
+
+body{
+    background-color: #fafafa;
+    font-family: 'HelveticaNeueCyrThin';
+}
+
+.main_content{
+    padding: 137px 20px 0px 20px;
+}
+.content{
+    max-width: 975px;
+    display: flex;
+    align-items: stretch;
+    flex-shrink: 0;
+    margin: 0 auto;
+}

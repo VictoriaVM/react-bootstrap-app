@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './../../css/train.css';
+import styles from './../../css/componentStyles/main.css';
 import Header from './Header.jsx';
 import Tabs from './Tabs.jsx';
 

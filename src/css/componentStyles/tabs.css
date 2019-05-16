@@ -1,0 +1,40 @@
+﻿.tabs{
+    width: 935px;
+    height: 52px;
+    border-top: 1px solid #efefef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.tabs div{
+    display: inline-block;
+}
+.marg{
+    margin-left: 60px;
+}
+.tabs img{
+    margin-right: 6px;
+    filter: opacity(50%);
+    -webkit-filter: opacity(50%);
+}
+.tabs span{
+    text-decoration: none;
+    color: #262626;
+    font-family: HelveticaNeueCyr;
+    display: inline-block;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 52px;
+    filter: opacity(50%);
+    -webkit-filter: opacity(50%);
+    text-transform: uppercase;
+}
+.active{
+    border-top: 1px solid #262626;
+}
+.active span, .active img{
+    filter: opacity(100%);
+    -webkit-filter: opacity(100%);
+}

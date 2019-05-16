@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './../../css/train.css';
+import styles from './../../css/componentStyles/navigation.css';
 import Logo from './Logo.jsx';
 import Form from './Form.jsx';
 import Buttons from './Buttons.jsx';
@@ -8,7 +8,6 @@ class Navigation extends Component {
     state = {
         name: this.props.initialName
     }
-
     componentDidMount () {
         window.addEventListener('scroll', this.handleScroll);
     }
@@ -32,7 +31,7 @@ class Navigation extends Component {
     }
     render () {
         const { isScrolled } = this.state;
-        return <div className={isScrolled ? styles.navigation_modified : styles.navigation} id='navigation'>
+        return <div className={isScrolled ? styles.navigation_modified : styles.navigation}>
             <div className={styles.content}>
                 <Logo/>
                 <Form/>
