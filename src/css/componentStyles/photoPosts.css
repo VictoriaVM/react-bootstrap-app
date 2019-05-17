@@ -77,18 +77,80 @@
     right: 20px;
 }
 .info_container{
-    height: 72px;
+    display: block;
+    width: 335px;
+}
+.info_container .info{
+    display: flex;
+    align-items: stretch;
+}
+.post_info_top .info, .post_info .info{
+    margin-left: 16px;
+}
+.post_info, .post_info_top, .post_info_comment{
     display: flex;
     align-items: stretch;
     flex-shrink: 0;
     margin: 0 auto;
-    padding: 20px 16px;
     border-bottom: 1px solid rgba(0,0,0,.0975);
 }
-.info_container .info{
-    margin-left: 16px;
-    display: flex;
-    align-items: stretch;
+.post_info_comment{
+    padding: 16px;
+    height: 56px;
+}
+.post_info_icons{
+    padding: 16px;
+    height: 94px;
+    border-bottom: 1px solid rgba(0,0,0,.0975);
+    border-top: 1px solid rgba(0,0,0,.0975);
+}
+.post_info_comment span{
+    font-size: 14px;
+    font-family: HelveticaNeueCyr;
+    padding: 0;
+    margin: 0;
+    align-self: center;
+    width: 207px;
+}
+.post_info_comment .subscribe_btn{
+    padding: 0;
+    align-self: center;
+    justify-self: end;
+}
+.post_info{
+    padding: 26px 36px 16px 16px;
+    overflow-y: scroll;
+    align-items: center;
+    border-bottom: none;
+    height: 376px;
+}
+.post_info_cover{
+    height: 376px;
+}
+/* хром, сафари */
+.post_info::-webkit-scrollbar {
+    width: 0;
+}
+/* ie 10+ */
+.post_info {
+    -ms-overflow-style:
+            none;
+}
+/* фф (свойство больше не работает, других способов тоже нет)*/
+.post_info {
+    overflow: -moz-scrollbars-none;
+}
+.post_info_top{
+    padding: 20px 16px;
+    height: 72px;
+}
+.post_info .info{
+    align-self: start;
+}
+.post_text {
+    font-size: 15px;
+    line-height: 18px;
+    font-family: HelveticaNeueCyrThin;
 }
 .post_dots{
     color: #262626;
@@ -103,6 +165,11 @@
     display: flex;
     justify-content: center;
     align-content: center;
+    align-self: center;
+}
+.post_info .avatar_post{
+    padding: 0 16px 0 0;
+    margin-left: -16px;
 }
 .avatar_post span img{
     border-radius: 50%;
@@ -127,7 +194,7 @@
     align-self: center;
     display: inline-block;
 }
-.top .subscribe_btn{
+.info_container .subscribe_btn{
     color: #3897f0;
     position: relative;
     box-sizing: border-box;
@@ -142,7 +209,7 @@
     width: auto;
     align-self: center;
 }
-.top .unsubscribe_btn{
+.info_container .unsubscribe_btn{
     color: #262626;
     position: relative;
     box-sizing: border-box;
