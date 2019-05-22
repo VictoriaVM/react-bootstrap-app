@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import styles from './../../css/componentStyles/logo.css';
+import PropTypes from 'prop-types';
 
 class Logo extends Component {
     state = {
         name: this.props.initialName
     }
+    static propTypes = {
+        initialName: PropTypes.string.isRequired
+    };
     componentDidMount () {
         window.addEventListener('scroll', this.handlePageScroll);
     }
@@ -29,12 +33,12 @@ class Logo extends Component {
     render () {
         const { pageIsScrolled } = this.state;
         return <div className={styles.logo}>
-            <img src="http://www.transparentpng.com/thumb/logo-instagram/SKq9yH-black-and-white-instagram-logo-png.png" style={{ width: 26, height: 26 }}/>
+            <img className={styles.insta_logo} src="http://www.transparentpng.com/thumb/logo-instagram/SKq9yH-black-and-white-instagram-logo-png.png"/>
             <img className={pageIsScrolled ? styles.stick_hidden : styles.stick}
-                src="https://img.icons8.com/ios/420/thick-vertical-line-filled.png" style={{ width: 3, height: 32 }}
+                src="https://img.icons8.com/ios/420/thick-vertical-line-filled.png"
             />
             <img className={pageIsScrolled ? styles.insta_hidden : styles.insta}
-                src="https://www.lipoza.com/Uploads/EditorUploads/instagram_.png" style={{ height: 38 }}
+                src="https://www.lipoza.com/Uploads/EditorUploads/instagram_.png"
             />
         </div>;
     }

@@ -1,47 +1,39 @@
 import React, { Component } from 'react';
-import styles from './../../css/componentStyles/photoPosts.css';
+import styles from '../../css/componentStyles/popUp.css';
+import PropTypes from 'prop-types';
 
-class PhotoTagged extends Component {
+class PopUp extends Component {
     state = {
-        hoverClass: 'isNotHovered',
-        popupVisible: false,
         buttonType: 'follow'
     };
-    onHover = () => {
-        this.setState({ hoverClass: 'isHovered' });
-    };
-    outHover = () => {
-        this.setState({ hoverClass: 'isNotHovered' });
+    static propTypes = {
+        url: PropTypes.string.isRequired,
+        updateDataVisibility: PropTypes.func.isRequired
     };
     updateData = () => {
-        if (this.state.button === 'follow') {
+        if (this.state.buttonType === 'follow') {
             this.setState({ buttonType: 'notFollow' });
         } else {
             this.setState({ buttonType: 'follow' });
         }
     };
-    makeVisible = () => { this.setState({ popupVisible: true }); };
-    makeInvisible = () => { this.setState({ popupVisible: false }); };
-
+    componentDidMount () {
+        document.body.classList.add(styles.overflow_hidden);
+    }
+    componentWillUnmount () {
+        document.body.classList.remove(styles.overflow_hidden);
+    }
     render () {
-        return <div
-            className={styles.photo}
-            onMouseOver={this.onHover}
-            onMouseOut={this.outHover}
-        >
-            <div className={this.state.popupVisible === false ? styles.b_popup_hidden : styles.b_popup}>
-                <div className={styles.closeIcon} onClick={this.makeInvisible}>
+        return <div>
+            <div className={styles.b_popup}>
+                <div className={styles.closeIcon} onClick={() => { this.props.updateDataVisibility(this.state.popupVisible); }}>
                     <span>
-                        <img src="https://png.pngtree.com/svg/20161106/ee8df8289e.png" style={{ width: 20, height: 20 }}/>
+                        <img src="https://png.pngtree.com/svg/20161106/ee8df8289e.png"/>
                     </span>
                 </div>
                 <div className={styles.b_popup_content}>
-                    <div className={'photo_post_container'}>
-                        <img
-                            // eslint-disable-next-line react/prop-types
-                            src={this.props.url}
-                            style={{ width: 598, height: 598 }}
-                        />
+                    <div className="photo_post_container">
+                        <img className={styles.photo_post_img} src={this.props.url}/>
                     </div>
                     <div className={styles.info_container}>
                         <div className={styles.post_info_top}>
@@ -69,7 +61,7 @@ class PhotoTagged extends Component {
                                         {this.state.buttonType === 'notFollow' ? 'Подписки' : 'Подписаться'}
                                     </a>
                                     <a
-                                        className={styles.post_dots}
+                                        className={styles.post_dots_triple}
                                     >
                                         <span>...</span>
                                     </a>
@@ -89,7 +81,19 @@ class PhotoTagged extends Component {
                                         <span className={styles.verified}>
                                             <img src="https://png.icons8.com/ios/1600/007AFF/verified-account"/>
                                         </span>
-                                        <span className={styles.post_text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                                        <span className={styles.post_text}>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                                            anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                                            in culpa qui officia deserunt mollit anim id est laborum.
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -109,41 +113,8 @@ class PhotoTagged extends Component {
                     </div>
                 </div>
             </div>
-            <div className={this.state.hoverClass === 'isNotHovered' ? styles.photo_hover_none : styles.photo_hover}
-                onClick={this.makeVisible}>
-                <div className={styles.hover_stats}>
-                    <div>
-                        <img src="https://image.flaticon.com/icons/png/512/14/14136.png"
-                            style={{ width: 16, height: 16 }}
-                        />
-                    </div>
-                    <span>
-                        {/* eslint-disable-next-line react/prop-types */}
-                        {this.props.likes}
-                        тыс.
-                    </span>
-                </div>
-                <div className={styles.hover_stats}>
-                    <div>
-                        <img
-                            src="http://www.iconarchive.com/download/i89259/icons8/ios7/Very-Basic-Speech-Bubble-Filled.ico"
-                            style={{ width: 16, height: 16 }}
-                        />
-                    </div>
-                    <span>
-                        {/* eslint-disable-next-line react/prop-types */}
-                        {this.props.comments.toLocaleString()}
-                    </span>
-                </div>
-            </div>
-            <div className={styles.photo_container}>
-                <img
-                    // eslint-disable-next-line react/prop-types
-                    src={this.props.url}
-                    style={{ width: 293, height: 293 }}/>
-            </div>
         </div>;
     }
 }
 
-export default PhotoTagged;
+export default PopUp;

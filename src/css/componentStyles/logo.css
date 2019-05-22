@@ -6,9 +6,14 @@
     width: 377.5px;
     height: 36px;
 }
+.insta_logo{
+    width: 26px;
+    height: 26px;
+}
 .insta{
     margin-top: 3px;
     display: inline-block;
+    height: 38px;
 }
 .insta_hidden{
     display: none;
@@ -17,6 +22,8 @@
 .stick{
     margin: 0px 13px;
     display: inline-block;
+    width: 3px;
+    height: 32px;
 }
 .stick_hidden{
     display: none;

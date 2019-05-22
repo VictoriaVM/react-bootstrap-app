@@ -18,6 +18,14 @@
     filter: opacity(50%);
     -webkit-filter: opacity(50%);
 }
+.tab_one_icon{
+    width: 10px;
+    height: 10px;
+}
+.tab_two_icon{
+    width: 12px;
+    height: 12px;
+}
 .tabs span{
     text-decoration: none;
     color: #262626;
@@ -37,4 +45,11 @@
 .active span, .active img{
     filter: opacity(100%);
     -webkit-filter: opacity(100%);
+}
+.photo_row{
+    width: 935px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
