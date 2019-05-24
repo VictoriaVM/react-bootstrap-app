@@ -1,18 +1,49 @@
 import React, { Component } from 'react';
 import styles from '../../css/componentStyles/popUp.css';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 class PopUp extends Component {
     state = {
-        buttonType: 'follow'
+        buttonType: 'follow',
+        heartType: 'white',
+        likesCount: this.props.likes
     };
     static propTypes = {
         url: PropTypes.string.isRequired,
-        updateDataVisibility: PropTypes.func.isRequired
+        likes: PropTypes.number.isRequired,
+        days_ago: PropTypes.number.isRequired,
+        heartType: PropTypes.string.isRequired,
+        likesCountPost: PropTypes.number.isRequired,
+        updateDataVisibility: PropTypes.func.isRequired,
+        likeUpdate: PropTypes.func.isRequired
     };
-    updateData = () => {
+    data = () => {
+        if (this.props.days_ago === 1) {
+            return 'день';
+        } else if (this.props.days_ago === 2 || this.props.days_ago === 3 || this.props.days_ago === 4) {
+            return 'дня';
+        } else {
+            return 'дней';
+        }
+    };
+    likeUpdateData = () => {
+        if (this.state.likesCount === this.props.likes) {
+            this.setState({
+                likesCount: ++this.state.likesCount,
+                heartType: 'red'
+            });
+        } else if (this.state.likesCount > this.props.likes) {
+            this.setState({
+                likesCount: --this.state.likesCount,
+                heartType: 'white'
+            });
+        }
+    };
+    updateDataPost = () => {
         if (this.state.buttonType === 'follow') {
             this.setState({ buttonType: 'notFollow' });
+            this.props.updateDataVisibility(this.state.popupVisible);
         } else {
             this.setState({ buttonType: 'follow' });
         }
@@ -26,7 +57,9 @@ class PopUp extends Component {
     render () {
         return <div>
             <div className={styles.b_popup}>
-                <div className={styles.closeIcon} onClick={() => { this.props.updateDataVisibility(this.state.popupVisible); }}>
+                <div className={styles.closeIcon} onClick={() => {
+                    this.props.updateDataVisibility(this.state.popupVisible);
+                }}>
                     <span>
                         <img src="https://png.pngtree.com/svg/20161106/ee8df8289e.png"/>
                     </span>
@@ -55,7 +88,7 @@ class PopUp extends Component {
                                     <a
                                         className={this.state.buttonType === 'follow' ? styles.subscribe_btn : styles.unsubscribe_btn}
                                         onClick={() => {
-                                            this.updateData(this.state.buttonType);
+                                            this.updateDataPost(this.state.buttonType);
                                         }}
                                     >
                                         {this.state.buttonType === 'notFollow' ? 'Подписки' : 'Подписаться'}
@@ -73,7 +106,8 @@ class PopUp extends Component {
                                 <div className={styles.info}>
                                     <div className={styles.avatar_post}>
                                         <span>
-                                            <img src="https://www.sde.co.ke/sdemedia/sdeimages/pulse/Leonardo111114.jpg"/>
+                                            <img
+                                                src="https://www.sde.co.ke/sdemedia/sdeimages/pulse/Leonardo111114.jpg"/>
                                         </span>
                                     </div>
                                     <div>
@@ -99,7 +133,30 @@ class PopUp extends Component {
                             </div>
                         </div>
                         <div className={styles.post_info_icons}>
+                            <div className={styles.icons}>
+                                <div className={styles.icons_left}>
+                                    <img className={classNames(styles.popUpIcons, { [styles.red]: this.state.heartType === 'red' })}
+                                        src={this.state.heartType === 'white'
+                                            ? 'https://cdn4.iconfinder.com/data/icons/48-bubbles/48/39.Heart-512.png'
+                                            : 'http://downloadicons.net/sites/default/files/red-heart-icon-16591.png'}
+                                        onClick={() => {
+                                            this.props.likeUpdate(this.state.likesCountPost, this.state.heartType);
+                                            this.likeUpdateData();
+                                        }}
+                                    />
+                                    <img className={styles.popUpIcons}
+                                        src="http://download.seaicons.com/download/i89260/icons8/ios7/icons8-ios7-very-basic-speech-bubble.ico"/>
+                                    <img className={styles.popUpIcons}
+                                        src="https://image.flaticon.com/icons/svg/1159/1159763.svg"/>
+                                </div>
+                                <img className={styles.popUpIcons_mark}
+                                    src="http://pngimages.net/sites/default/files/bookmark-png-image-95855.png"/>
+                            </div>
                             <div className={styles.info}>
+                                <span className={styles.likes}>{this.state.likesCount.toLocaleString()} отметок "Нравится"</span>
+                            </div>
+                            <div className={styles.info_date}>
+                                <span>{this.props.days_ago} {this.data()} назад</span>
                             </div>
                         </div>
                         <div className={styles.post_info_comment}>

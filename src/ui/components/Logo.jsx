@@ -7,7 +7,7 @@ class Logo extends Component {
         name: this.props.initialName
     }
     static propTypes = {
-        initialName: PropTypes.string.isRequired
+        initialName: PropTypes.any.isRequired
     };
     componentDidMount () {
         window.addEventListener('scroll', this.handlePageScroll);

@@ -202,3 +202,40 @@
     height: 30px;
     margin-bottom: 20px;
 }
+.post_info_icons{
+    padding: 0;
+}
+.icons{
+    padding: 12px 16px 8px 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.popUpIcons{
+    width: auto;
+    height: 24px;
+    padding-right: 16px;
+    cursor: pointer;
+}
+.popUpIcons_mark{
+    width: auto;
+    height: 24px;
+    justify-self: flex-end !important;
+}
+.post_info_icons .info{
+    padding: 0 16px;
+}
+.likes{
+     font-family: HelveticaNeueCyr;
+     font-size: 14px;
+ }
+.info_date span{
+    font-family: HelveticaNeueCyrThin;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+.post_info_icons .info_date{
+    padding: 5px 16px;
+}
+.red{
+
+}
