@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../../css/componentStyles/popUp.css';
+import styles from './popUp.css';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -18,7 +18,12 @@ class PopUp extends Component {
         updateDataVisibility: PropTypes.func.isRequired,
         likeUpdate: PropTypes.func.isRequired
     };
-    data = () => {
+    constructor (props) {
+        super(props);
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    };
+    date = () => {
         if (this.props.days_ago === 1) {
             return 'день';
         } else if (this.props.days_ago === 2 || this.props.days_ago === 3 || this.props.days_ago === 4) {
@@ -43,16 +48,25 @@ class PopUp extends Component {
     updateDataPost = () => {
         if (this.state.buttonType === 'follow') {
             this.setState({ buttonType: 'notFollow' });
-            this.props.updateDataVisibility(this.state.popupVisible);
         } else {
             this.setState({ buttonType: 'follow' });
         }
     };
+    setWrapperRef (node) {
+        this.wrapperRef = node;
+    };
+    handleClickOutside = (event) => {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+            this.props.updateDataVisibility(this.state.popupVisible);
+        }
+    };
     componentDidMount () {
         document.body.classList.add(styles.overflow_hidden);
+        document.addEventListener('mousedown', this.handleClickOutside);
     }
     componentWillUnmount () {
         document.body.classList.remove(styles.overflow_hidden);
+        document.removeEventListener('mousedown', this.handleClickOutside);
     }
     render () {
         return <div>
@@ -64,7 +78,7 @@ class PopUp extends Component {
                         <img src="https://png.pngtree.com/svg/20161106/ee8df8289e.png"/>
                     </span>
                 </div>
-                <div className={styles.b_popup_content}>
+                <div className={styles.b_popup_content} ref={this.setWrapperRef}>
                     <div className="photo_post_container">
                         <img className={styles.photo_post_img} src={this.props.url}/>
                     </div>
@@ -156,7 +170,7 @@ class PopUp extends Component {
                                 <span className={styles.likes}>{this.state.likesCount.toLocaleString()} отметок "Нравится"</span>
                             </div>
                             <div className={styles.info_date}>
-                                <span>{this.props.days_ago} {this.data()} назад</span>
+                                <span>{this.props.days_ago} {this.date()} назад</span>
                             </div>
                         </div>
                         <div className={styles.post_info_comment}>

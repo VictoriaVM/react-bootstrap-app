@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Train from '../../components/Train.jsx';
+import Train from '../../components/train/Train.jsx';
 
 class MainPage extends Component {
     render () {

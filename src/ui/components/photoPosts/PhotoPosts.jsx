@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import styles from './../../css/componentStyles/photoPosts.css';
-import PopUp from './PopUp.jsx';
+import styles from './photoPosts.css';
+import PopUp from '../popUp/PopUp.jsx';
 import PropTypes from 'prop-types';
+
+const ESC_KEY_CODE = 27;
 
 class PhotoPosts extends Component {
     state = {
@@ -16,10 +18,6 @@ class PhotoPosts extends Component {
         days_ago: PropTypes.number.isRequired,
         comments: PropTypes.number.isRequired
     };
-    constructor (props) {
-        super(props);
-        this.escFunction = this.escFunction.bind(this);
-    }
     likesRound = () => {
         let number = this.props.likes;
         const zeroCountThousand = 3;
@@ -42,7 +40,7 @@ class PhotoPosts extends Component {
         this.setState({ hoverClass: false });
     };
     updateDataVisibility = () => {
-        if (this.state.popupVisible === false) {
+        if (!this.state.popupVisible) {
             this.setState({ popupVisible: true });
         } else {
             this.setState({ popupVisible: false });
@@ -61,11 +59,11 @@ class PhotoPosts extends Component {
             });
         }
     };
-    escFunction (event) {
-        if (event.keyCode === 27) {
+    escFunction = (event) => {
+        if (event.keyCode === ESC_KEY_CODE) {
             this.setState({ popupVisible: false });
         }
-    }
+    };
     componentDidMount () {
         document.addEventListener('keydown', this.escFunction, false);
     }

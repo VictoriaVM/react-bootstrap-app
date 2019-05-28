@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './../../css/componentStyles/header.css';
+import styles from './header.css';
 
 class Header extends Component {
     state = {
@@ -70,9 +70,8 @@ class Header extends Component {
                     <div>
                         <h2>Leonardo DiCaprio</h2><br/>
                         <span>Actor and Environmentalist</span><br/>
-                        <a href="https://l.instagram.com/?u=http%3A%2F%2Fglobaldealfornature.org%2F&amp;e=ATO6prVX3zI8NGvQMhr-rPbDnWOEU0ktkPpLPhdllQlN_YfxUoKdqIncv7LqA-RxpGwmg_a6"
+                        <a href=''
                             className={styles.info_link}
-                            rel="me nofollow noopener noreferrer"
                             target="_blank">
                             globaldealfornature.org
                         </a>

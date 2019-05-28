@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './../../css/componentStyles/tabs.css';
+import styles from './tabs.css';
 import classNames from 'classnames';
-import PhotoPosts from './PhotoPosts';
+import PhotoPosts from '../photoPosts/PhotoPosts';
 
 const photoPostsData = [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/6/66/Square_Panorama_of_Aru_Valley%2C_Jammu_and_Kashmir%2C_India.jpg',

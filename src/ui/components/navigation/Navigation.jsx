@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './../../css/componentStyles/navigation.css';
-import Logo from './Logo.jsx';
-import Form from './Form.jsx';
-import Buttons from './Buttons.jsx';
+import styles from './navigation.css';
+import Logo from '../logo/Logo.jsx';
+import Form from '../form/Form.jsx';
+import Buttons from '../buttons/Buttons.jsx';
 import PropTypes from 'prop-types';
 
 class Navigation extends Component {
@@ -32,7 +32,7 @@ class Navigation extends Component {
                 isScrolled: true
             });
         }
-    }
+    };
     render () {
         const { isScrolled } = this.state;
         return <div className={isScrolled ? styles.navigation_modified : styles.navigation}>

@@ -1,6 +1,6 @@
-﻿@import '../fonts.css';
+﻿@import './../../../css/fonts.css';
 
-body{
+body {
     background-color: #fafafa;
     font-family: 'HelveticaNeueCyrThin';
 }

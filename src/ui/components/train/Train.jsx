@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Navigation from './Navigation.jsx';
-import Main from './Main.jsx';
+import Navigation from '../navigation/Navigation.jsx';
+import Main from '../main/Main.jsx';
 
 class Train extends Component {
     render () {

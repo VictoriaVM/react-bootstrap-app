@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './../../css/componentStyles/form.css';
+import styles from './form.css';
 
 class Form extends Component {
     state = {

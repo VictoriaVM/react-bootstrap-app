@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './../../css/componentStyles/logo.css';
+import styles from './logo.css';
 import PropTypes from 'prop-types';
 
 class Logo extends Component {
@@ -33,7 +33,7 @@ class Logo extends Component {
     render () {
         const { pageIsScrolled } = this.state;
         return <div className={styles.logo}>
-            <img className={styles.insta_logo} src="http://www.transparentpng.com/thumb/logo-instagram/SKq9yH-black-and-white-instagram-logo-png.png"/>
+            <img className={styles.insta_logo} src="https://clipart.info/images/ccovers/1516920571instagram-png-instagram-icon-1600x1600.png"/>
             <img className={pageIsScrolled ? styles.stick_hidden : styles.stick}
                 src="https://img.icons8.com/ios/420/thick-vertical-line-filled.png"
             />
