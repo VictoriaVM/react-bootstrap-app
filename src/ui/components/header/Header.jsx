@@ -1,34 +1,14 @@
 import React, { Component } from 'react';
 import styles from './header.css';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
-    state = {
-        user: {
-            followersCount: 95,
-            buttonType: 'notFollow',
-            subscriptions: 31
-        }
-    };
-    updateData = () => {
-        if (this.state.user.buttonType === 'follow') {
-            this.setState({
-                user: {
-                    ...this.state.user,
-                    followersCount: this.state.user.followersCount--,
-                    ...this.state.user,
-                    buttonType: 'notFollow'
-                }
-            });
-        } else {
-            this.setState({
-                user: {
-                    ...this.state.user,
-                    followersCount: this.state.user.followersCount++,
-                    ...this.state.user,
-                    buttonType: 'follow'
-                }
-            });
-        }
+    static propTypes = {
+        buttonType: PropTypes.string.isRequired,
+        followersCount: PropTypes.number.isRequired,
+        subscriptions: PropTypes.number.isRequired,
+        posts: PropTypes.number.isRequired,
+        handleSubscribeClick: PropTypes.func.isRequired
     };
     render () {
         return <div className={styles.header}>
@@ -44,15 +24,13 @@ class Header extends Component {
                         <span className={styles.verified}><img
                             src="https://png.icons8.com/ios/1600/007AFF/verified-account"/></span>
                         <button
-                            className={this.state.user.buttonType === 'notFollow' ? styles.enter_btn : styles.follow_btn}
-                            onClick={() => {
-                                this.updateData(this.state.user.followersCount, this.state.user.buttonType);
-                            }}
+                            className={this.props.buttonType === 'follow' ? styles.enter_btn : styles.follow_btn}
+                            onClick={this.props.handleSubscribeClick}
                         >
-                            {this.state.user.buttonType === 'follow' ? 'Подписки' : 'Подписаться'}
+                            {this.props.buttonType === 'follow' ? 'Подписаться' : 'Подписки'}
                         </button>
                         <button
-                            className={this.state.user.buttonType === 'notFollow' ? styles.info_btn : styles.info_btn_mod}
+                            className={this.props.buttonType === 'follow' ? styles.info_btn : styles.info_btn_mod}
                         >
                             <div><span>&#9660;</span></div>
                         </button>
@@ -63,9 +41,9 @@ class Header extends Component {
                         </a>
                     </div>
                     <ul className={styles.stats}>
-                        <li><span>978</span> публикаций</li>
-                        <li><span>{this.state.user.followersCount}</span> подписчиков</li>
-                        <li>Подписки: <span>{this.state.user.subscriptions}</span></li>
+                        <li><span>{this.props.posts}</span> публикаций</li>
+                        <li><span>{this.props.followersCount}</span> подписчиков</li>
+                        <li>Подписки: <span>{this.props.subscriptions}</span></li>
                     </ul>
                     <div>
                         <h2>Leonardo DiCaprio</h2><br/>

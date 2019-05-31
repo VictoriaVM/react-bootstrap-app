@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import styles from './popUp.css';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 class PopUp extends Component {
     state = {
-        buttonType: 'follow',
-        heartType: 'white',
-        likesCount: this.props.likes
     };
     static propTypes = {
         url: PropTypes.string.isRequired,
         likes: PropTypes.number.isRequired,
         days_ago: PropTypes.number.isRequired,
         heartType: PropTypes.string.isRequired,
-        likesCountPost: PropTypes.number.isRequired,
         updateDataVisibility: PropTypes.func.isRequired,
-        likeUpdate: PropTypes.func.isRequired
+        handleLikeClick: PropTypes.func.isRequired,
+        buttonType: PropTypes.string.isRequired,
+        handleSubscribeClick: PropTypes.func.isRequired
     };
     constructor (props) {
         super(props);
@@ -30,26 +27,6 @@ class PopUp extends Component {
             return 'дня';
         } else {
             return 'дней';
-        }
-    };
-    likeUpdateData = () => {
-        if (this.state.likesCount === this.props.likes) {
-            this.setState({
-                likesCount: ++this.state.likesCount,
-                heartType: 'red'
-            });
-        } else if (this.state.likesCount > this.props.likes) {
-            this.setState({
-                likesCount: --this.state.likesCount,
-                heartType: 'white'
-            });
-        }
-    };
-    updateDataPost = () => {
-        if (this.state.buttonType === 'follow') {
-            this.setState({ buttonType: 'notFollow' });
-        } else {
-            this.setState({ buttonType: 'follow' });
         }
     };
     setWrapperRef (node) {
@@ -100,12 +77,10 @@ class PopUp extends Component {
                                         <span>.</span>
                                     </a>
                                     <a
-                                        className={this.state.buttonType === 'follow' ? styles.subscribe_btn : styles.unsubscribe_btn}
-                                        onClick={() => {
-                                            this.updateDataPost(this.state.buttonType);
-                                        }}
+                                        className={this.props.buttonType === 'follow' ? styles.subscribe_btn : styles.unsubscribe_btn}
+                                        onClick={this.props.handleSubscribeClick}
                                     >
-                                        {this.state.buttonType === 'notFollow' ? 'Подписки' : 'Подписаться'}
+                                        {this.props.buttonType === 'notFollow' ? 'Подписки' : 'Подписаться'}
                                     </a>
                                     <a
                                         className={styles.post_dots_triple}
@@ -149,14 +124,11 @@ class PopUp extends Component {
                         <div className={styles.post_info_icons}>
                             <div className={styles.icons}>
                                 <div className={styles.icons_left}>
-                                    <img className={classNames(styles.popUpIcons, { [styles.red]: this.state.heartType === 'red' })}
-                                        src={this.state.heartType === 'white'
+                                    <img className={styles.popUpIcons}
+                                        src={this.props.heartType === 'white'
                                             ? 'https://cdn4.iconfinder.com/data/icons/48-bubbles/48/39.Heart-512.png'
                                             : 'http://downloadicons.net/sites/default/files/red-heart-icon-16591.png'}
-                                        onClick={() => {
-                                            this.props.likeUpdate(this.state.likesCountPost, this.state.heartType);
-                                            this.likeUpdateData();
-                                        }}
+                                        onClick={this.props.handleLikeClick}
                                     />
                                     <img className={styles.popUpIcons}
                                         src="http://download.seaicons.com/download/i89260/icons8/ios7/icons8-ios7-very-basic-speech-bubble.ico"/>
@@ -167,7 +139,7 @@ class PopUp extends Component {
                                     src="http://pngimages.net/sites/default/files/bookmark-png-image-95855.png"/>
                             </div>
                             <div className={styles.info}>
-                                <span className={styles.likes}>{this.state.likesCount.toLocaleString()} отметок "Нравится"</span>
+                                <span className={styles.likes}>{this.props.likes.toLocaleString()} отметок "Нравится"</span>
                             </div>
                             <div className={styles.info_date}>
                                 <span>{this.props.days_ago} {this.date()} назад</span>

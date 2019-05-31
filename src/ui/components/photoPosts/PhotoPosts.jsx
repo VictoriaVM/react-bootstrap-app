@@ -8,15 +8,17 @@ const ESC_KEY_CODE = 27;
 class PhotoPosts extends Component {
     state = {
         hoverClass: false,
-        popupVisible: false,
-        heartType: 'white',
-        likesCountPost: this.props.likes
+        popupVisible: false
     };
     static propTypes = {
         url: PropTypes.string.isRequired,
         likes: PropTypes.number.isRequired,
         days_ago: PropTypes.number.isRequired,
-        comments: PropTypes.number.isRequired
+        comments: PropTypes.number.isRequired,
+        heartType: PropTypes.string.isRequired,
+        handleLikeClick: PropTypes.func.isRequired,
+        buttonType: PropTypes.string.isRequired,
+        handleSubscribeClick: PropTypes.func.isRequired
     };
     likesRound = () => {
         let number = this.props.likes;
@@ -46,19 +48,6 @@ class PhotoPosts extends Component {
             this.setState({ popupVisible: false });
         }
     };
-    likeUpdate = () => {
-        if (this.state.likesCountPost === this.props.likes) {
-            this.setState({
-                likesCountPost: this.state.likesCountPost++,
-                heartType: 'white'
-            });
-        } else if (this.state.likesCountPost > this.props.likes) {
-            this.setState({
-                likesCountPost: this.state.likesCountPost--,
-                heartType: 'red'
-            });
-        }
-    };
     escFunction = (event) => {
         if (event.keyCode === ESC_KEY_CODE) {
             this.setState({ popupVisible: false });
@@ -81,10 +70,12 @@ class PhotoPosts extends Component {
             <PopUp url={this.props.url}
                 likes={this.props.likes}
                 days_ago={this.props.days_ago}
-                heartType={this.state.heartType}
-                likesCountPost={this.state.likesCountPost}
+                heartType={this.props.heartType}
                 updateDataVisibility={this.updateDataVisibility}
-                likeUpdate={this.likeUpdate}/> }
+                handleLikeClick={this.props.handleLikeClick}
+                buttonType={this.props.buttonType}
+                handleSubscribeClick={ this.props.handleSubscribeClick}
+            /> }
             <div className={this.state.hoverClass === false ? styles.photo_hover_none : styles.photo_hover}
                 onClick={this.updateDataVisibility}>
                 <div className={styles.hover_stats}>
@@ -92,7 +83,7 @@ class PhotoPosts extends Component {
                         <img src="https://image.flaticon.com/icons/png/512/14/14136.png"/>
                     </div>
                     <span>
-                        {this.likesRound(this.state.likesCountPost)}
+                        {this.likesRound(this.props.likes)}
                     </span>
                 </div>
                 <div className={styles.hover_stats}>
