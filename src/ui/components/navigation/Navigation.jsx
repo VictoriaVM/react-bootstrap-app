@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 class Navigation extends Component {
     state = {
         name: this.props.initialName
-    }
+    };
     static propTypes = {
         initialName: PropTypes.any.isRequired
     };

@@ -18,7 +18,12 @@ class PhotoPosts extends Component {
         heartType: PropTypes.string.isRequired,
         handleLikeClick: PropTypes.func.isRequired,
         buttonType: PropTypes.string.isRequired,
-        handleSubscribeClick: PropTypes.func.isRequired
+        handleSubscribeClick: PropTypes.func.isRequired,
+        avatarImage: PropTypes.string.isRequired,
+        profileName: PropTypes.string.isRequired,
+        verifiedImage: PropTypes.bool.isRequired,
+        userComments: PropTypes.object.isRequired,
+        handleComment: PropTypes.func.isRequired
     };
     likesRound = () => {
         let number = this.props.likes;
@@ -75,6 +80,11 @@ class PhotoPosts extends Component {
                 handleLikeClick={this.props.handleLikeClick}
                 buttonType={this.props.buttonType}
                 handleSubscribeClick={ this.props.handleSubscribeClick}
+                avatarImage={this.props.avatarImage}
+                profileName={this.props.profileName}
+                verifiedImage={this.props.verifiedImage}
+                userComments={this.props.userComments}
+                handleComment={this.props.handleComment}
             /> }
             <div className={this.state.hoverClass === false ? styles.photo_hover_none : styles.photo_hover}
                 onClick={this.updateDataVisibility}>

@@ -13,7 +13,12 @@ class PopUp extends Component {
         updateDataVisibility: PropTypes.func.isRequired,
         handleLikeClick: PropTypes.func.isRequired,
         buttonType: PropTypes.string.isRequired,
-        handleSubscribeClick: PropTypes.func.isRequired
+        handleSubscribeClick: PropTypes.func.isRequired,
+        avatarImage: PropTypes.string.isRequired,
+        profileName: PropTypes.string.isRequired,
+        verifiedImage: PropTypes.bool.isRequired,
+        userComments: PropTypes.object.isRequired,
+        handleComment: PropTypes.func.isRequired
     };
     constructor (props) {
         super(props);
@@ -63,14 +68,15 @@ class PopUp extends Component {
                         <div className={styles.post_info_top}>
                             <div className={styles.avatar_post}>
                                 <span>
-                                    <img src="https://www.sde.co.ke/sdemedia/sdeimages/pulse/Leonardo111114.jpg"/>
+                                    <img src={this.props.avatarImage}/>
                                 </span>
                             </div>
                             <div className={styles.info}>
                                 <div className={styles.top}>
-                                    <h1 className={styles.profileName_post}>leonardodicaprio</h1>
-                                    <span className={styles.verified}><img
-                                        src="https://png.icons8.com/ios/1600/007AFF/verified-account"/></span>
+                                    <h1 className={styles.profileName_post}>{this.props.profileName}</h1>
+                                    <span className={styles.verified}>
+                                        {this.props.verifiedImage && <img src="https://png.icons8.com/ios/1600/007AFF/verified-account"/> }
+                                    </span>
                                     <a
                                         className={styles.post_dots}
                                     >
@@ -96,13 +102,14 @@ class PopUp extends Component {
                                     <div className={styles.avatar_post}>
                                         <span>
                                             <img
-                                                src="https://www.sde.co.ke/sdemedia/sdeimages/pulse/Leonardo111114.jpg"/>
+                                                src={this.props.avatarImage}
+                                            />
                                         </span>
                                     </div>
                                     <div>
-                                        <h1 className={styles.profileName_post}>leonardodicaprio</h1>
+                                        <h2 className={styles.profileName_post}>{this.props.profileName}</h2>
                                         <span className={styles.verified}>
-                                            <img src="https://png.icons8.com/ios/1600/007AFF/verified-account"/>
+                                            {this.props.verifiedImage && <img src="https://png.icons8.com/ios/1600/007AFF/verified-account"/> }
                                         </span>
                                         <span className={styles.post_text}>
                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -119,6 +126,24 @@ class PopUp extends Component {
                                         </span>
                                     </div>
                                 </div>
+                                {this.props.userComments.commentText.length > 0 &&
+                                    <div className={styles.info}>
+                                        <div className={styles.avatar_post}>
+                                            <span>
+                                                <img
+                                                    src={'https://static.appvn.com/a/uploads/thumbnails/112015/mr-square_icon.png'}
+                                                />
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h2 className={styles.profileName_post}>cutesquare</h2>
+                                            <span className={styles.verified}/>
+                                            <span className={styles.post_text}>
+                                                {this.props.userComments.commentText}
+                                            </span>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                         <div className={styles.post_info_icons}>
@@ -147,10 +172,18 @@ class PopUp extends Component {
                         </div>
                         <div className={styles.post_info_comment}>
                             <div className={styles.info}>
-                                <span>Добавьте комментарий...</span>
-                                <a className={styles.subscribe_btn}>
+                                <form>
+                                    <span>
+                                        <input
+                                            type='text'
+                                            placeholder='Добавьте комментарий...'
+                                            id='elem1'
+                                        />
+                                    </span>
+                                    <a className={styles.subscribe_btn} onClick={this.props.handleComment}>
                                     Опубликовать
-                                </a>
+                                    </a>
+                                </form>
                             </div>
                         </div>
                     </div>

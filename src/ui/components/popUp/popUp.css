@@ -52,7 +52,7 @@
 .post_info_top .info, .post_info .info{
     margin-left: 16px;
 }
-.post_info, .post_info_top, .post_info_comment{
+.post_info_top, .post_info_comment{
     display: flex;
     align-items: stretch;
     flex-shrink: 0;
@@ -63,6 +63,9 @@
     padding: 16px;
     height: 56px;
 }
+.post_info_comment .info{
+    display: flex;
+}
 .post_info_icons{
     padding: 16px;
     height: 94px;
@@ -70,12 +73,9 @@
     border-top: 1px solid rgba(0,0,0,.0975);
 }
 .post_info_comment span{
-    font-size: 14px;
-    font-family: HelveticaNeueCyr;
     padding: 0;
     margin: 0;
     align-self: center;
-    width: 207px;
 }
 .post_info_comment .subscribe_btn{
     padding: 0;
@@ -85,7 +85,7 @@
 .post_info{
     padding: 26px 36px 16px 16px;
     overflow-y: scroll;
-    align-items: center;
+    display: block;
     border-bottom: none;
     height: 376px;
 }
@@ -111,7 +111,9 @@
     position: relative;
 }
 .post_info .info{
+    display: flex;
     align-self: start;
+    margin-bottom: 24px;
 }
 .post_text {
     font-size: 15px;
@@ -236,6 +238,26 @@
 .post_info_icons .info_date{
     padding: 5px 16px;
 }
-.red{
-
+form input {
+    display: inline-block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    font-family: HelveticaNeueCyr;
+    color: #262626;
+    width: 207px;
+    filter: opacity(50%);
+    -webkit-filter: opacity(50%);
+}
+form input:focus{
+    filter: opacity(100%);
+    -webkit-filter: opacity(100%);
+}
+form {
+    display: flex;
+}
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
 }

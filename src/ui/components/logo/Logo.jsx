@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class Logo extends Component {
     state = {
         name: this.props.initialName
-    }
+    };
     static propTypes = {
         initialName: PropTypes.any.isRequired
     };

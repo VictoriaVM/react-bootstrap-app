@@ -67,6 +67,26 @@ class Tabs extends Component {
         this.props.setPhotoTagged(newPointsTagged);
     };
 
+    handleComment = i => () => {
+        const { photoPostsData } = this.props;
+        const { photoTaggedData } = this.props;
+        const newPointsPosts = [...photoPostsData];
+        const newPointsTagged = [...photoTaggedData];
+        let val = document.getElementById('elem1').value;
+        if (newPointsTagged[i].isCommented === false) {
+            newPointsTagged[i].userComments.commentText = val;
+            newPointsTagged[i].comments = newPointsTagged[i].comments + 1;
+            newPointsTagged[i].isCommented = true;
+            this.props.setPhotoTagged(newPointsTagged);
+        }
+        if (newPointsPosts[i].isCommented === false) {
+            newPointsPosts[i].userComments.commentText = val;
+            newPointsPosts[i].comments = newPointsPosts[i].comments + 1;
+            newPointsPosts[i].isCommented = true;
+            this.props.setPhotoPosts(newPointsPosts);
+        }
+    };
+
     render () {
         const { activeTabName } = this.state;
         const { photoPostsData } = this.props;
@@ -99,6 +119,11 @@ class Tabs extends Component {
                             buttonType={this.props.buttonType}
                             handleLikeClick = {this.handleLikeClick(i)}
                             handleSubscribeClick = {this.props.handleSubscribeClick}
+                            avatarImage = {'https://www.sde.co.ke/sdemedia/sdeimages/pulse/Leonardo111114.jpg'}
+                            profileName = {'leonardodicaprio'}
+                            verifiedImage = {true}
+                            userComments ={photoPostData.userComments}
+                            handleComment={this.handleComment(i)}
                         />)}
                 </div>
                 : <div className={styles.photo_row}>
@@ -113,6 +138,11 @@ class Tabs extends Component {
                             buttonType={this.props.buttonType}
                             handleLikeClick = {this.handleLikeClick(i)}
                             handleSubscribeClick = {this.props.handleSubscribeClick}
+                            avatarImage = {'https://androidapkcloud.com/wp-content/uploads/2017/09/Square-PhotoWithout.png'}
+                            profileName={'leonardosuperfan'}
+                            verifiedImage = {false}
+                            userComments ={photoTagData.userComments}
+                            handleComment={this.handleComment(i)}
                         />)}
                 </div>}
         </div>;

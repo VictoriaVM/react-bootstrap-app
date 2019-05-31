@@ -15,7 +15,7 @@ class Form extends Component {
     };
     render () {
         return <div className={this.state.formState === 'standard' ? styles.form : styles.form_change}>
-            <form className='add cf' onFocus={this.onFormClickHandler} onBlur={this.outFormClickHandler}>
+            <form onFocus={this.onFormClickHandler} onBlur={this.outFormClickHandler}>
                 <div className={this.state.glassIcon === 'center' ? styles.glass : styles.glass_change} role="button" tabIndex="0">
                     <span className={styles.SearchIcon}>
                         <img className={styles.SearchIcon}
