@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-import styles from './popUp.css';
+import styles from './PopUp.css';
 import PropTypes from 'prop-types';
 
 class PopUp extends Component {
-    state = {
-    };
     static propTypes = {
         url: PropTypes.string.isRequired,
         likes: PropTypes.number.isRequired,
         days_ago: PropTypes.number.isRequired,
-        heartType: PropTypes.string.isRequired,
+        isClicked: PropTypes.bool.isRequired,
         updateDataVisibility: PropTypes.func.isRequired,
         handleLikeClick: PropTypes.func.isRequired,
         buttonType: PropTypes.string.isRequired,
@@ -18,7 +16,8 @@ class PopUp extends Component {
         profileName: PropTypes.string.isRequired,
         verifiedImage: PropTypes.bool.isRequired,
         userComments: PropTypes.object.isRequired,
-        handleComment: PropTypes.func.isRequired
+        handleComment: PropTypes.func.isRequired,
+        popupVisible: PropTypes.bool.isRequired
     };
     constructor (props) {
         super(props);
@@ -39,7 +38,7 @@ class PopUp extends Component {
     };
     handleClickOutside = (event) => {
         if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-            this.props.updateDataVisibility(this.state.popupVisible);
+            this.props.updateDataVisibility(this.props.popupVisible);
         }
     };
     componentDidMount () {
@@ -54,7 +53,7 @@ class PopUp extends Component {
         return <div>
             <div className={styles.b_popup}>
                 <div className={styles.closeIcon} onClick={() => {
-                    this.props.updateDataVisibility(this.state.popupVisible);
+                    this.props.updateDataVisibility(this.props.popupVisible);
                 }}>
                     <span>
                         <img src="https://png.pngtree.com/svg/20161106/ee8df8289e.png"/>
@@ -150,7 +149,7 @@ class PopUp extends Component {
                             <div className={styles.icons}>
                                 <div className={styles.icons_left}>
                                     <img className={styles.popUpIcons}
-                                        src={this.props.heartType === 'white'
+                                        src={!this.props.isClicked
                                             ? 'https://cdn4.iconfinder.com/data/icons/48-bubbles/48/39.Heart-512.png'
                                             : 'http://downloadicons.net/sites/default/files/red-heart-icon-16591.png'}
                                         onClick={this.props.handleLikeClick}

@@ -24,7 +24,6 @@ const initialState = {
             comments: 1651,
             days_ago: 1,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -35,7 +34,6 @@ const initialState = {
             comments: 1814,
             days_ago: 2,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -46,7 +44,6 @@ const initialState = {
             comments: 1935,
             days_ago: 3,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -57,7 +54,6 @@ const initialState = {
             comments: 1812,
             days_ago: 5,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -68,7 +64,6 @@ const initialState = {
             comments: 1890,
             days_ago: 7,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -79,7 +74,6 @@ const initialState = {
             comments: 1945,
             days_ago: 8,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -90,7 +84,6 @@ const initialState = {
             comments: 1989,
             days_ago: 9,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -101,7 +94,6 @@ const initialState = {
             comments: 1934,
             days_ago: 12,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -112,7 +104,6 @@ const initialState = {
             comments: 1982,
             days_ago: 15,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -125,7 +116,6 @@ const initialState = {
             comments: 15,
             days_ago: 1,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -137,7 +127,6 @@ const initialState = {
             days_ago: 3,
             isClicked: false,
             isCommented: false,
-            heartType: 'white',
             userComments: {
                 commentText: ''
             }
@@ -147,7 +136,6 @@ const initialState = {
             comments: 10,
             days_ago: 3,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -158,7 +146,6 @@ const initialState = {
             comments: 45,
             days_ago: 3,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -169,7 +156,6 @@ const initialState = {
             comments: 5,
             days_ago: 4,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -180,7 +166,6 @@ const initialState = {
             comments: 67,
             days_ago: 4,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -191,7 +176,6 @@ const initialState = {
             comments: 99,
             days_ago: 5,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -202,7 +186,6 @@ const initialState = {
             comments: 45,
             days_ago: 6,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''
@@ -213,7 +196,6 @@ const initialState = {
             comments: 12,
             days_ago: 7,
             isClicked: false,
-            heartType: 'white',
             isCommented: false,
             userComments: {
                 commentText: ''

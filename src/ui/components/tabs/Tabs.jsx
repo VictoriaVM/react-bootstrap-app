@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import styles from './tabs.css';
+import styles from './Tabs.css';
 import classNames from 'classnames';
-import PhotoPosts from '../photoPosts/PhotoPosts';
+import PhotoPosts from '../PhotoPosts/PhotoPosts';
 import setPhotoPosts from '../../../actions/setPhotoPosts';
 import setPhotoTagged from '../../../actions/setPhotoTagged';
 import PropTypes from 'prop-types';
@@ -41,35 +41,29 @@ class Tabs extends Component {
         });
     };
     handleLikeClick = i => () => {
-        const { photoPostsData } = this.props;
-        const { photoTaggedData } = this.props;
+        const { photoPostsData, photoTaggedData } = this.props;
         const newPointsPosts = [...photoPostsData];
         const newPointsTagged = [...photoTaggedData];
         if (newPointsPosts[i].isClicked === false) {
             newPointsPosts[i].likes = newPointsPosts[i].likes + 1;
             newPointsPosts[i].isClicked = true;
-            newPointsPosts[i].heartType = 'red';
         } else if (newPointsPosts[i].isClicked === true) {
             newPointsPosts[i].likes = newPointsPosts[i].likes - 1;
             newPointsPosts[i].isClicked = false;
-            newPointsPosts[i].heartType = 'white';
         }
         this.props.setPhotoPosts(newPointsPosts);
         if (newPointsTagged[i].isClicked === false) {
             newPointsTagged[i].likes = newPointsTagged[i].likes + 1;
             newPointsTagged[i].isClicked = true;
-            newPointsTagged[i].heartType = 'red';
         } else if (newPointsTagged[i].isClicked === true) {
             newPointsTagged[i].likes = newPointsTagged[i].likes - 1;
             newPointsTagged[i].isClicked = false;
-            newPointsTagged[i].heartType = 'white';
         }
         this.props.setPhotoTagged(newPointsTagged);
     };
 
     handleComment = i => () => {
-        const { photoPostsData } = this.props;
-        const { photoTaggedData } = this.props;
+        const { photoPostsData, photoTaggedData } = this.props;
         const newPointsPosts = [...photoPostsData];
         const newPointsTagged = [...photoTaggedData];
         let val = document.getElementById('elem1').value;
@@ -89,8 +83,7 @@ class Tabs extends Component {
 
     render () {
         const { activeTabName } = this.state;
-        const { photoPostsData } = this.props;
-        const { photoTaggedData } = this.props;
+        const { photoPostsData, photoTaggedData } = this.props;
         return <div>
             <div className={styles.tabs}>
                 <div className={classNames({ [styles.active]: activeTabName === 'tab1' })}
@@ -115,7 +108,7 @@ class Tabs extends Component {
                             likes={photoPostData.likes}
                             comments={photoPostData.comments}
                             days_ago={photoPostData.days_ago}
-                            heartType={photoPostData.heartType}
+                            isClicked={photoPostData.isClicked}
                             buttonType={this.props.buttonType}
                             handleLikeClick = {this.handleLikeClick(i)}
                             handleSubscribeClick = {this.props.handleSubscribeClick}
@@ -134,7 +127,7 @@ class Tabs extends Component {
                             likes={photoTagData.likes}
                             comments={photoTagData.comments}
                             days_ago={photoTagData.days_ago}
-                            heartType={photoTagData.heartType}
+                            isClicked={photoTagData.isClicked}
                             buttonType={this.props.buttonType}
                             handleLikeClick = {this.handleLikeClick(i)}
                             handleSubscribeClick = {this.props.handleSubscribeClick}

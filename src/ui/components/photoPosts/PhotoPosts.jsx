@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import styles from './photoPosts.css';
-import PopUp from '../popUp/PopUp.jsx';
+import styles from './PhotoPosts.css';
+import PopUp from '../PopUp/PopUp.jsx';
 import PropTypes from 'prop-types';
 
 const ESC_KEY_CODE = 27;
@@ -15,7 +15,7 @@ class PhotoPosts extends Component {
         likes: PropTypes.number.isRequired,
         days_ago: PropTypes.number.isRequired,
         comments: PropTypes.number.isRequired,
-        heartType: PropTypes.string.isRequired,
+        isClicked: PropTypes.bool.isRequired,
         handleLikeClick: PropTypes.func.isRequired,
         buttonType: PropTypes.string.isRequired,
         handleSubscribeClick: PropTypes.func.isRequired,
@@ -75,7 +75,7 @@ class PhotoPosts extends Component {
             <PopUp url={this.props.url}
                 likes={this.props.likes}
                 days_ago={this.props.days_ago}
-                heartType={this.props.heartType}
+                isClicked={this.props.isClicked}
                 updateDataVisibility={this.updateDataVisibility}
                 handleLikeClick={this.props.handleLikeClick}
                 buttonType={this.props.buttonType}
@@ -85,6 +85,7 @@ class PhotoPosts extends Component {
                 verifiedImage={this.props.verifiedImage}
                 userComments={this.props.userComments}
                 handleComment={this.props.handleComment}
+                popupVisible={this.state.popupVisible}
             /> }
             <div className={this.state.hoverClass === false ? styles.photo_hover_none : styles.photo_hover}
                 onClick={this.updateDataVisibility}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './logo.css';
+import styles from './Logo.css';
 import PropTypes from 'prop-types';
 
 class Logo extends Component {
@@ -29,7 +29,7 @@ class Logo extends Component {
                 pageIsScrolled: true
             });
         }
-    }
+    };
     render () {
         const { pageIsScrolled } = this.state;
         return <div className={styles.logo}>

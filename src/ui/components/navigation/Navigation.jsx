@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import styles from './navigation.css';
-import Logo from '../logo/Logo.jsx';
-import Form from '../form/Form.jsx';
-import Buttons from '../buttons/Buttons.jsx';
-import PropTypes from 'prop-types';
+import styles from './Navigation.css';
+import Logo from '../Logo/Logo.jsx';
+import Form from '../Form/Form.jsx';
+import Buttons from '../Buttons/Buttons.jsx';
 
 class Navigation extends Component {
     state = {
-        name: this.props.initialName
-    };
-    static propTypes = {
-        initialName: PropTypes.any.isRequired
+        initialName: false
     };
     componentDidMount () {
         window.addEventListener('scroll', this.handleScroll);
@@ -37,7 +33,7 @@ class Navigation extends Component {
         const { isScrolled } = this.state;
         return <div className={isScrolled ? styles.navigation_modified : styles.navigation}>
             <div className={styles.content}>
-                <Logo/>
+                <Logo initialName={this.state.initialName}/>
                 <Form/>
                 <Buttons/>
             </div>

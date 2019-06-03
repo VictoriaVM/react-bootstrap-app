@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import styles from './main.css';
-import Header from '../header/Header.jsx';
-import Tabs from '../tabs/Tabs.jsx';
+import styles from './Main.css';
+import Header from '../Header/Header.jsx';
+import Tabs from '../Tabs/Tabs.jsx';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import setUser from '../../../actions/setUser';
